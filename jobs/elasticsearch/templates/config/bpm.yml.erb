@@ -11,5 +11,7 @@ processes:
       allow_executions: true
     - path: /var/vcap/jobs/elasticsearch/config
       writable: true
+    - path: /var/vcap/packages/elasticsearch/plugins
+      writable: true
     capabilities:
     - SYS_RESOURCE
