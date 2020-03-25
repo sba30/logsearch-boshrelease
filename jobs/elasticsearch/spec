@@ -120,7 +120,7 @@ properties:
   elasticsearch.cloud.aws.protocol:
     description: Protocol to use for all API calls to AWS endpoints
     default: "https"
-  elasticsearch.cloud.aws.s3-plugin
+  elasticsearch.cloud.aws.s3-plugin:
     description: Protocol to use for all API calls to AWS endpoints
     default: "-b repository-s3"
   elasticsearch.cloud.aws.read_timeout:
