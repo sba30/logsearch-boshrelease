@@ -32,7 +32,7 @@ mkdir -p /var/vcap/packages/elasticsearch/plugins
 # install plugins
 rm -rf /var/vcap/packages/elasticsearch/plugins/*
 <% if_p('elasticsearch.cloud.aws.access_key', 'elasticsearch.cloud.aws.secret_key') do %>
-    /var/vcap/packages/elasticsearch/bin/elasticsearch-plugin install <%= p("elasticsearch.cloud.s3-plugin") %> 
+    /var/vcap/packages/elasticsearch/bin/elasticsearch-plugin install <%= p("elasticsearch.cloud.aws.s3-plugin") %> 
 <% end %>
 <% p("elasticsearch.plugins").each do |plugin| name, path = plugin.first %>
   <% if path.start_with? '/var/vcap' %>
