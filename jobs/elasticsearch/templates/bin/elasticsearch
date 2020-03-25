@@ -20,6 +20,7 @@ export HEAP_SIZE=$((( $( cat /proc/meminfo | grep MemTotal | awk '{ print $2 }' 
   HEAP_SIZE=<%= heap_size %>
 <% end %>
 
+
 export ES_JAVA_OPTS="-Xms$HEAP_SIZE -Xmx$HEAP_SIZE -Djava.io.tmpdir=$TMP_DIR"
 export ES_PATH_CONF=${JOB_DIR}/config
 
@@ -31,7 +32,7 @@ mkdir -p /var/vcap/packages/elasticsearch/plugins
 # install plugins
 rm -rf /var/vcap/packages/elasticsearch/plugins/*
 <% if_p('elasticsearch.cloud.aws.access_key', 'elasticsearch.cloud.aws.secret_key') do %>
-  /var/vcap/packages/elasticsearch/bin/elasticsearch-plugin install -b repository-s3
+    /var/vcap/packages/elasticsearch/bin/elasticsearch-plugin install <%= p("elasticsearch.cloud.s3-plugin") %> 
 <% end %>
 <% p("elasticsearch.plugins").each do |plugin| name, path = plugin.first %>
   <% if path.start_with? '/var/vcap' %>
